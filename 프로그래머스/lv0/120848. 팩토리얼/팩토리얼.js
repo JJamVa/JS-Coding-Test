@@ -1,13 +1,13 @@
 function solution(n) {
-  let answer = 1;
-  let acc = 1;
-  for (let i = 1; ; i++) {
-    acc *= i;
-    if (acc > n) {
-      answer = i - 1;
-      break;
+    var answer = 1;
+    var acc = 1;
+    let i = 1;
+
+    while(true){
+        acc *= i
+        if(acc > n) return i - 1
+        answer = i++;
     }
-    answer = i;
-  }
-  return answer;
+
+    return answer;
 }
