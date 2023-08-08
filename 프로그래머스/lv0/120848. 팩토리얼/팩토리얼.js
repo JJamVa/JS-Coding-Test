@@ -1,9 +1,13 @@
-const rec = (value, n) => {
-    if(value > n) return value - 1;
-    return rec(value + 1, parseInt(n / value))
-}
-
-
 function solution(n) {
-    return rec(1,n);
+  let answer = 1;
+  let acc = 1;
+  for (let i = 1; i <= n; i++) {
+    acc *= i;
+    if (acc > n) {
+      answer = i - 1;
+      break;
+    }
+    answer = i;
+  }
+  return answer;
 }
