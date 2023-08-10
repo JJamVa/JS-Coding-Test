@@ -1,8 +1,6 @@
 function solution(my_string) {
-    var answer = [];
-    var check = false
-    var arr = my_string.split(" ")
-    arr.forEach(e => {
+    var [answer,check] = [[], false];
+    my_string.split(" ").forEach(e => {
         if(e === "-") check = true
         if(!isNaN(e)) {
             check ? answer.push("-" + e) : answer.push(e)
