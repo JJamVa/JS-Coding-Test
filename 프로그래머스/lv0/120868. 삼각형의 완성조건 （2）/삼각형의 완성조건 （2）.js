@@ -5,6 +5,7 @@ function solution(sides) {
         test.push(i)
         test.sort((a,b) => a - b)
         if(test[0] + test[1] > test[2]) answer+=1
+        console.log(`${test[0]} ${test[1]} ${test[2]} ${test[0] + test[1] <= test[2]}`)
     }
     return answer;
 }
