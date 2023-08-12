@@ -1,3 +1,4 @@
 function solution(x) {
-    return x % x.toString().split("").reduce((a,b) => a + parseInt(b), 0) === 0 ? true : false
+    var answer = true;
+    return answer;
 }
