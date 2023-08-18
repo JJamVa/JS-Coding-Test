@@ -1,33 +1,17 @@
 function solution(polynomial) {
-    var answer = '';
-    if(polynomial.length === 1 && polynomial[0] === 'x') return 'x'
-    var [x_arr,num_arr] = [[],[]]
-    var arr = polynomial.split(" ")
-    for(var i in arr){
-        if(arr[i].includes("x")){
-            if(arr[i].length === 1) x_arr.push(1)
-            else{
-                var arr1 = arr[i].split("x")
-                x_arr.push(parseInt(arr1[0]))
-            }
-        }
-        else if(!isNaN(parseInt(arr[i]))){
-            num_arr.push(parseInt(arr[i]))
-        }
+    let answer = polynomial.split(" + ")
+    let [x_arr,num_arr] = [[],[]]
+    for(let x = 0; x < answer.length; x++){
+        if(answer[x].includes("x")) answer[x] !== "x" ? x_arr.push(answer[x]) : x_arr.push("1x")
+        else num_arr.push(answer[x])
     }
+    let x_result = x_arr.join("").split("x").filter(e => e !== "").reduce((a,b) => a + parseInt(b),0)
+    let num_result = num_arr.reduce((a,b) => a + parseInt(b),0);
     
-    if(x_arr.length > 0){
-        const x_sum = x_arr.reduce((a,b) => a+b)
-        if(num_arr.length > 0){
-            if(x_sum === 1) answer += ("x + ")
-            else answer += (x_sum.toString() + "x + ")
-        }else answer += (x_sum.toString() + "x")
-    }
+    let add = ""
+    if(x_result === 0) add = num_result.toString()
+    else if(num_result === 0) add = `${x_result !== 1 ? x_result : ""}x`
+    else add = `${x_result !== 1 ? x_result : ""}x + ${num_result.toString()}`
     
-    if(num_arr.length > 0){
-        const sum = num_arr.reduce((a,b) => a+b)
-        if(sum > 0) answer += sum.toString()
-    }
-    
-    return answer;
+    return add;
 }
