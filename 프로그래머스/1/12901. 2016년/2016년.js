@@ -1,8 +1,13 @@
 function solution(a, b) {
-    let day = ["FRI","SAT","SUN","MON","TUE","WED","THU"];
-    let date = [31,29,31,30,31,30,31,31,30,31,30,31];
+    let date = new Date(2016, a-1, b);
+    let day = date.getDay();
     
-    let idx = ((date.slice(0, a - 1).reduce((a, b) => a + b, 0) + b) % 7 - 1 + 7) % 7;
-    
-    return day[idx];
+    return day === 0 ? "SUN" 
+            : day === 1 ? "MON"
+            : day === 2 ? "TUE"
+            : day === 3 ? "WED"
+            : day === 4 ? "THU"
+            : day === 5 ? "FRI"
+            : day === 6 ? "SAT"
+            : "Error"
 }
