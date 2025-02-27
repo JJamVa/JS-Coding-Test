@@ -3,12 +3,6 @@ function solution(friends, gifts) {
     let user_state = new Map();
     let next_gift = new Map();
     
-    for(let friend of friends){
-        user.set(friend, new Map());
-        user_state.set(friend, 0);
-        next_gift.set(friend, 0)
-    }
-    
     // 누가 누구에게 줬는지 전체 gifts
     while(gifts.length !== 0){
         let value = gifts.shift().split(" ");
@@ -33,8 +27,8 @@ function solution(friends, gifts) {
             let value2 = user.get(friend_B)?.get(friend_A) || 0
             
             if(value1 === value2){
-                let gift_A = user_state.get(friend_A);
-                let gift_B = user_state.get(friend_B);
+                let gift_A = user_state.get(friend_A) || 0;
+                let gift_B = user_state.get(friend_B) || 0;
                 
                 if(gift_A !== gift_B){
                     gift_A > gift_B 
